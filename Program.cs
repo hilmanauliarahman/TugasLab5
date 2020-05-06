@@ -1,27 +1,39 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace TugasClassDanObject
+namespace TugasLab5
 {
+
     class Program
     {
         static void Main(string[] args)
         {
-            Taxi taxi = new Taxi();
+            printerWindows printer = new printerWindows();
 
-            taxi.DriverName = "Jono";
-            taxi.OnDuty = true;
-            taxi.NumbOfPassenger = 10;
+            Console.WriteLine("Pilih Printer : ");
+            Console.WriteLine("1. Epson");
+            Console.WriteLine("2. Canon");
+            Console.WriteLine("3. LaserJet\n");
 
-            taxi.TaxiInfo();
-            taxi.PickUpPassenger();
-            taxi.DropOfPassenger();
+            Console.Write("Nomor Printer [1-3] : ");
+            int nomorPrinter = Convert.ToInt32(Console.ReadLine());
+
+            if (nomorPrinter == 1)
+            {
+                printer = new Epson();
+            }else if (nomorPrinter == 2)
+            {
+                printer = new Canon();
+            }else if (nomorPrinter == 3)
+            {
+                printer = new LaserJet();
+            }
+            printer.show();
+            printer.startprint();
 
             Console.ReadKey();
         }
     }
 }
-
